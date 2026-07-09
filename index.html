@@ -198,9 +198,22 @@
         .prezzo { color: var(--accent); font-weight: 600; font-size: 1.2rem; }
 
         /* CONTATTI */
-        .contatti { padding: 100px 10%; display: flex; justify-content: space-between; gap: 40px; }
+        .contatti { padding: 100px 10%; display: flex; justify-content: space-between; align-items: center; gap: 60px; }
+        .contatti-info { flex: 1; }
         .contatti-info h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent); }
-        .contatti-info p { margin-bottom: 10px; color: var(--text-muted); }
+        .contatti-info p { margin-bottom: 12px; color: var(--text-muted); }
+        
+        /* CONTAINER INIEZIONE MAPPA GOOGLE */
+        .map-container {
+            flex: 1;
+            width: 100%;
+            height: 350px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #333;
+            /* Forza la mappa standard di Google a diventare Dark Mode per il nostro stile Orbis */
+            filter: grayscale(1) invert(0.92) contrast(1.2);
+        }
         
         footer {
             background-color: #050505;
@@ -215,7 +228,7 @@
             .filosofia { flex-direction: column; padding: 80px 5%; text-align: center; }
             .hero h1 { font-size: 3rem; }
             nav ul { display: none; }
-            .contatti { flex-direction: column; text-align: center; }
+            .contatti { flex-direction: column; text-align: center; gap: 40px; }
         }
     </style>
 </head>
@@ -299,7 +312,7 @@
     <section id="contatti" class="contatti">
         <div class="contatti-info">
             <h2>Vieni a trovarci</h2>
-            <p><strong>Indirizzo:</strong> Via Roma 123, 00100 Roma (RM)</p>
+            <p><strong>Indirizzo:</strong> Piazza del Colosseo, 1, 00184 Roma (RM)</p>
             <p><strong>Telefono:</strong> +39 06 1234 5678</p>
             <p><strong>Email:</strong> info@luminacucina.it</p>
             <br>
@@ -308,8 +321,17 @@
             <p>Dom: 12:30 - 15:00 / 19:30 - 23:00</p>
             <p>Lunedì: Chiuso</p>
         </div>
-        <div style="flex: 1; background: #222; border-radius: 4px; display: flex; align-items: center; justify-content: center; min-height: 250px;">
-            <p style="color: #666;">[ Modulo di Prenotazione o Google Maps ]</p>
+        
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!2s0x132f61b653ca1351:0x31afbf991ca41084!8m2!3d41.8902102!4d12.4922309!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f61b653ca1351%3A0x31afbf991ca41084!2sColosseo!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
         </div>
     </section>
 
