@@ -134,33 +134,19 @@
         .filosofia-text { flex: 1; }
         .filosofia-text h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent); }
         
-        /* BOX VUOTO IMMAGINE FILOSOFIA */
+        /* CONTENITORE IMMAGINE FILOSOFIA PULITO */
         .filosofia-image-container {
             flex: 1;
             height: 500px;
-            background-color: #222;
-            border: 2px dashed #444;
+            background-color: #1a1a1a;
             border-radius: 4px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
             overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
         .filosofia-image-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            position: absolute;
-            top: 0; left: 0;
-        }
-        .img-placeholder-text {
-            color: #666;
-            font-size: 0.9rem;
-            text-align: center;
-            padding: 20px;
-            z-index: 1;
         }
 
         /* MENU PREVIEW */
@@ -168,28 +154,21 @@
         .menu h2 { font-size: 2.5rem; margin-bottom: 60px; }
         .grid-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         
-        .piatto-card { background: var(--bg-color); padding-bottom: 20px; transition: transform 0.3s; }
+        .piatto-card { background: var(--bg-color); padding-bottom: 20px; transition: transform 0.3s; border-radius: 4px; overflow: hidden; }
         .piatto-card:hover { transform: translateY(-10px); }
         
-        /* BOX VUOTO IMMAGINI PIATTI */
+        /* CONTENITORE IMMAGINI PIATTI PULITO */
         .piatto-img-container {
             width: 100%;
             height: 250px;
-            background-color: #222;
+            background-color: #1a1a1a;
             border-bottom: 3px solid var(--accent);
-            border-top: 1px dashed #444;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
             overflow: hidden;
         }
         .piatto-img-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            position: absolute;
-            top: 0; left: 0;
         }
         
         .piatto-info { padding: 20px; }
@@ -203,7 +182,7 @@
         .contatti-info h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent); }
         .contatti-info p { margin-bottom: 12px; color: var(--text-muted); }
         
-        /* CONTAINER INIEZIONE MAPPA GOOGLE */
+        /* CONTAINER MAPPA GOOGLE FIX */
         .map-container {
             flex: 1;
             width: 100%;
@@ -211,7 +190,7 @@
             border-radius: 6px;
             overflow: hidden;
             border: 1px solid #333;
-            /* Forza la mappa standard di Google a diventare Dark Mode per il nostro stile Orbis */
+            /* Applica il filtro Dark Mode Orbis */
             filter: grayscale(1) invert(0.92) contrast(1.2);
         }
         
@@ -261,8 +240,7 @@
         </div>
         
         <div class="filosofia-image-container">
-            <span class="img-placeholder-text">📸 Genera un'immagine di uno Chef di alta cucina di spalle, o dettagli di piatti gourmet eleganti.<br>Nome file: <strong>img/filosofia.jpg</strong></span>
-            <img src="img/filosofia.jpg" alt="" onerror="this.style.display='none'">
+            <img src="img/filosofia.jpg" alt="La cucina di Lumina">
         </div>
     </section>
 
@@ -272,8 +250,7 @@
             
             <div class="piatto-card">
                 <div class="piatto-img-container">
-                    <span class="img-placeholder-text">📸 Foto di una Tartare gourmet.<br>Nome: <strong>img/piatto1.jpg</strong></span>
-                    <img src="img/piatto1.jpg" alt="" onerror="this.style.display='none'">
+                    <img src="img/piatto1.jpg" alt="Tartare di Fassona">
                 </div>
                 <div class="piatto-info">
                     <h3>Tartare di Fassona</h3>
@@ -284,8 +261,7 @@
             
             <div class="piatto-card">
                 <div class="piatto-img-container">
-                    <span class="img-placeholder-text">📸 Foto di un Risotto giallo zafferano.<br>Nome: <strong>img/piatto2.jpg</strong></span>
-                    <img src="img/piatto2.jpg" alt="" onerror="this.style.display='none'">
+                    <img src="img/piatto2.jpg" alt="Risotto Zafferano e Oro">
                 </div>
                 <div class="piatto-info">
                     <h3>Risotto Zafferano e Oro</h3>
@@ -296,8 +272,7 @@
             
             <div class="piatto-card">
                 <div class="piatto-img-container">
-                    <span class="img-placeholder-text">📸 Foto di un Dolce al cioccolato elegante.<br>Nome: <strong>img/piatto3.jpg</strong></span>
-                    <img src="img/piatto3.jpg" alt="" onerror="this.style.display='none'">
+                    <img src="img/piatto3.jpg" alt="Sfera di Cioccolato">
                 </div>
                 <div class="piatto-info">
                     <h3>Sfera di Cioccolato</h3>
@@ -324,7 +299,7 @@
         
         <div class="map-container">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m4!2s0x132f61b653ca1351:0x31afbf991ca41084!8m2!3d41.8902102!4d12.4922309!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f61b653ca1351%3A0x31afbf991ca41084!2sColosseo!5e0!3m2!1sit!2sit!4v1710000000000!5m2!1sit!2sit" 
+                src="https://maps.google.com/maps?q=Piazza%20del%20Colosseo%201,%20Roma&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
                 style="border:0;" 
@@ -336,7 +311,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Lumina Ristorante. Tutti i diritti riservati. P.IVA 12345678901</p>
+        <p>© 2026 Lumina Ristorante. Tutti i diritti riservati. P.IVA 12345678901</p>
         <p style="margin-top: 10px;">Progettato in puro codice da <strong>The Orbis Project</strong></p>
     </footer>
 
