@@ -2,299 +2,184 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina | Cucina Sensoriale</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Lumina | Cucina Sensoriale Roma</title>
+    <meta name="description" content="Lumina - Ristorante fine dining a Roma. Alta gastronomia, materie prime d'eccellenza e percorsi sensoriali nel cuore della capitale.">
+
+    <!-- Tipografia Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
-    <style>
-        :root {
-            --bg-color: #0f0f0f;
-            --text-main: #f5f5f5;
-            --text-muted: #a3a3a3;
-            --accent: #d4af37;
-            --accent-hover: #b5952f;
-            --surface: #1a1a1a;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
-
-        header {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            transition: background 0.3s ease, padding 0.3s ease;
-        }
-        
-        header.scrolled {
-            background-color: rgba(15, 15, 15, 0.95);
-            padding: 15px 5%;
-            border-bottom: 1px solid #333;
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--text-main);
-            text-decoration: none;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .logo span { color: var(--accent); }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-        
-        nav a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
-        nav a:hover { color: var(--accent); }
-
-        .btn-prenota {
-            border: 1px solid var(--accent);
-            padding: 10px 24px;
-            border-radius: 4px;
-            color: var(--accent);
-            transition: all 0.3s;
-        }
-        .btn-prenota:hover { background-color: var(--accent); color: #000; }
-
-        /* HERO CON IMMAGINE DI SFONDO LOCALE */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), 
-                        url('img/sfondo-hero.jpg') center/cover no-repeat;
-            background-color: #111;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 20px;
-            letter-spacing: 4px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: #000;
-            padding: 15px 40px;
-            text-decoration: none;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            transition: background 0.3s, transform 0.2s;
-        }
-        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-3px); }
-
-        /* FILOSOFIA */
-        .filosofia {
-            padding: 120px 10%;
-            display: flex;
-            align-items: center;
-            gap: 60px;
-        }
-        .filosofia-text { flex: 1; }
-        .filosofia-text h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent); }
-        
-        /* CONTENITORE IMMAGINE FILOSOFIA PULITO */
-        .filosofia-image-container {
-            flex: 1;
-            height: 500px;
-            background-color: #1a1a1a;
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-        }
-        .filosofia-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* MENU PREVIEW */
-        .menu { padding: 100px 10%; background-color: var(--surface); text-align: center; }
-        .menu h2 { font-size: 2.5rem; margin-bottom: 60px; }
-        .grid-menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        
-        .piatto-card { background: var(--bg-color); padding-bottom: 20px; transition: transform 0.3s; border-radius: 4px; overflow: hidden; }
-        .piatto-card:hover { transform: translateY(-10px); }
-        
-        /* CONTENITORE IMMAGINI PIATTI PULITO */
-        .piatto-img-container {
-            width: 100%;
-            height: 250px;
-            background-color: #1a1a1a;
-            border-bottom: 3px solid var(--accent);
-            overflow: hidden;
-        }
-        .piatto-img-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .piatto-info { padding: 20px; }
-        .piatto-info h3 { font-size: 1.4rem; margin-bottom: 10px; }
-        .piatto-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 15px;}
-        .prezzo { color: var(--accent); font-weight: 600; font-size: 1.2rem; }
-
-        /* CONTATTI */
-        .contatti { padding: 100px 10%; display: flex; justify-content: space-between; align-items: center; gap: 60px; }
-        .contatti-info { flex: 1; }
-        .contatti-info h2 { font-size: 2.5rem; margin-bottom: 20px; color: var(--accent); }
-        .contatti-info p { margin-bottom: 12px; color: var(--text-muted); }
-        
-        /* CONTAINER MAPPA GOOGLE FIX */
-        .map-container {
-            flex: 1;
-            width: 100%;
-            height: 350px;
-            border-radius: 6px;
-            overflow: hidden;
-            border: 1px solid #333;
-            /* Applica il filtro Dark Mode Orbis */
-            filter: grayscale(1) invert(0.92) contrast(1.2);
-        }
-        
-        footer {
-            background-color: #050505;
-            text-align: center;
-            padding: 30px;
-            font-size: 0.8rem;
-            color: #555;
-            border-top: 1px solid #222;
-        }
-
-        @media (max-width: 768px) {
-            .filosofia { flex-direction: column; padding: 80px 5%; text-align: center; }
-            .hero h1 { font-size: 3rem; }
-            nav ul { display: none; }
-            .contatti { flex-direction: column; text-align: center; gap: 40px; }
-        }
-    </style>
+    <!-- Foglio di Stile Esterno -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- 1. HEADER & NAVIGAZIONE DESKTOP / MOBILE -->
     <header id="navbar">
         <a href="#" class="logo">Lumi<span>na</span></a>
-        <nav>
+
+        <!-- Navigazione Desktop -->
+        <nav class="nav-desktop">
             <ul>
                 <li><a href="#filosofia">Filosofia</a></li>
-                <li><a href="#menu">Il Menu</a></li>
+                <li><a href="#menu">I Classici</a></li>
+                <li><a href="#" class="open-menu-trigger">La Carta</a></li>
                 <li><a href="#contatti">Dove Siamo</a></li>
-                <li><a href="#contatti" class="btn-prenota">Prenota</a></li>
+                <li><a href="#" class="btn-prenota open-booking-trigger">Riserva</a></li>
             </ul>
         </nav>
+
+        <!-- Pulsante Hamburger Mobile (Tre linee minimali) -->
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Apri menu di navigazione">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
     </header>
 
+    <!-- Menu a Tendina Mobile a Schermo Intero -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <nav class="mobile-nav-links">
+            <a href="#filosofia" class="mobile-link">Filosofia</a>
+            <a href="#menu" class="mobile-link">I Nostri Classici</a>
+            <a href="#" class="mobile-link open-menu-trigger">La Carta Completa</a>
+            <a href="#contatti" class="mobile-link">Dove Siamo</a>
+            <a href="#" class="btn-primary mobile-btn-prenota open-booking-trigger">Riserva un Tavolo</a>
+        </nav>
+    </div>
+
+    <!-- 2. HERO PRINCIPALE -->
     <section class="hero">
-        <h1>L'arte del Gusto.</h1>
-        <p>Un viaggio sensoriale tra la tradizione italiana e l'innovazione contemporanea. Scopri l'essenza della materia prima.</p>
-        <a href="#contatti" class="btn-primary">Riserva un Tavolo</a>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-subtitle">Alta Gastronomia Contemporanea</span>
+            <h1>L'arte del Gusto.</h1>
+            <p>Un viaggio sensoriale tra la memoria culinaria italiana e l'avanguardia tecnica. Scopri la purezza della materia prima nel cuore di Roma.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn-primary open-booking-trigger">Riserva un Tavolo</a>
+                <a href="#" class="btn-ghost open-menu-trigger">Sfoglia il Menù</a>
+            </div>
+        </div>
     </section>
 
+    <!-- 3. FILOSOFIA -->
     <section id="filosofia" class="filosofia">
         <div class="filosofia-text">
+            <span class="section-tag">Visione & Metodo</span>
             <h2>La nostra visione</h2>
-            <p>Selezioniamo i migliori ingredienti dai piccoli produttori locali per trasformarli in opere d'arte culinaria. A Lumina, crediamo che ogni piatto debba raccontare una storia: quella della nostra terra, reinterpretata con tecniche moderne e rispetto per la natura.</p>
-            <br>
-            <p>Non offriamo solo una cena, ma un'esperienza immersiva pensata per risvegliare tutti i sensi.</p>
+            <p>Selezioniamo ingredienti rari dai micro-produttori del territorio laziale e italiano per sublimarli in composizioni culinarie senza compromessi.</p>
+            <p>A Lumina ogni portata è concepita come un dialogo tra contrasti: temperature, consistenze e aromi studiati per orchestrare una profonda risonanza emotiva.</p>
+            <div class="filosofia-badges">
+                <div class="badge-item">
+                    <strong>0 Km</strong>
+                    <span>Filiera Rigorosa</span>
+                </div>
+                <div class="badge-item">
+                    <strong>450+</strong>
+                    <span>Etichette in Cantina</span>
+                </div>
+                <div class="badge-item">
+                    <strong>12</strong>
+                    <span>Tavoli Esclusivi</span>
+                </div>
+            </div>
         </div>
         
         <div class="filosofia-image-container">
-            <img src="img/filosofia.jpg" alt="La cucina di Lumina">
+            <img src="img/filosofia.jpg" alt="La cucina a vista di Lumina" loading="lazy" decoding="async">
         </div>
     </section>
 
+    <!-- 4. I NOSTRI CLASSICI (ANTEPRIMA PIATTI) -->
     <section id="menu" class="menu">
-        <h2>I Nostri Classici</h2>
+        <div class="section-header">
+            <span class="section-tag">Creazioni Iconiche</span>
+            <h2>I Nostri Classici</h2>
+            <p>Tre manifesti culinari che definiscono l'identità gastronomica della cucina di Lumina.</p>
+        </div>
+
         <div class="grid-menu">
-            
-            <div class="piatto-card">
+            <!-- Piatto 1 -->
+            <article class="piatto-card">
                 <div class="piatto-img-container">
-                    <img src="img/piatto1.jpg" alt="Tartare di Fassona">
+                    <img src="img/piatto1.jpg" alt="Tartare di Fassona" loading="lazy" decoding="async">
                 </div>
                 <div class="piatto-info">
-                    <h3>Tartare di Fassona</h3>
-                    <p>Con tuorlo d'uovo marinato, tartufo nero estivo e cialda croccante al parmigiano.</p>
-                    <span class="prezzo">€ 24</span>
+                    <div class="piatto-header">
+                        <h3>Tartare di Fassona</h3>
+                        <span class="prezzo">€ 24</span>
+                    </div>
+                    <p>Battuta al coltello, tuorlo d'uovo di selva marinato, perlage di tartufo nero estivo e cialda croccante al Parmigiano Reggiano 36 mesi.</p>
                 </div>
-            </div>
+            </article>
             
-            <div class="piatto-card">
+            <!-- Piatto 2 -->
+            <article class="piatto-card featured-dish">
+                <div class="dish-badge">Signature</div>
                 <div class="piatto-img-container">
-                    <img src="img/piatto2.jpg" alt="Risotto Zafferano e Oro">
+                    <img src="img/piatto2.jpg" alt="Risotto Zafferano e Oro" loading="lazy" decoding="async">
                 </div>
                 <div class="piatto-info">
-                    <h3>Risotto Zafferano e Oro</h3>
-                    <p>Riso Carnaroli riserva, pistilli di zafferano iraniano, midollo brasato e foglia d'oro 24k.</p>
-                    <span class="prezzo">€ 32</span>
+                    <div class="piatto-header">
+                        <h3>Risotto Zafferano e Oro</h3>
+                        <span class="prezzo">€ 32</span>
+                    </div>
+                    <p>Riso Carnaroli riserva all'onda, pistilli di zafferano puro, riduzione di midollo affumicato e foglia d'oro edibile 24 carati.</p>
                 </div>
-            </div>
+            </article>
             
-            <div class="piatto-card">
+            <!-- Piatto 3 -->
+            <article class="piatto-card">
                 <div class="piatto-img-container">
-                    <img src="img/piatto3.jpg" alt="Sfera di Cioccolato">
+                    <img src="img/piatto3.jpg" alt="Sfera di Cioccolato" loading="lazy" decoding="async">
                 </div>
                 <div class="piatto-info">
-                    <h3>Sfera di Cioccolato</h3>
-                    <p>Fondente 72%, cuore di lampone e polvere di pistacchio di Bronte, servita con caramello caldo.</p>
-                    <span class="prezzo">€ 16</span>
+                    <div class="piatto-header">
+                        <h3>Sfera di Cioccolato</h3>
+                        <span class="prezzo">€ 16</span>
+                    </div>
+                    <p>Fondente monorigine 72%, cuore cremoso di lamponi selvatici e polvere di pistacchio di Bronte DOP con cascata di caramello salato caldo.</p>
                 </div>
+            </article>
+        </div>
+
+        <!-- Call To Action per la Carta Completa -->
+        <div class="menu-cta-banner">
+            <div class="menu-cta-text">
+                <h3>Desideri esplorare l'intera proposta gastronomica?</h3>
+                <p>Scopri i percorsi degustazione a mano libera dello Chef e la selezione della cantina.</p>
             </div>
-            
+            <button class="btn-primary open-menu-trigger">Consulta il Menù Completo</button>
         </div>
     </section>
 
+    <!-- 5. CONTATTI, ORARI E MAPPA -->
     <section id="contatti" class="contatti">
         <div class="contatti-info">
+            <span class="section-tag">Ospitalità & Sede</span>
             <h2>Vieni a trovarci</h2>
-            <p><strong>Indirizzo:</strong> Piazza del Colosseo, 1, 00184 Roma (RM)</p>
-            <p><strong>Telefono:</strong> +39 06 1234 5678</p>
-            <p><strong>Email:</strong> info@luminacucina.it</p>
-            <br>
-            <p><strong>Orari di apertura:</strong></p>
-            <p>Mar - Sab: 19:30 - 23:30</p>
-            <p>Dom: 12:30 - 15:00 / 19:30 - 23:00</p>
-            <p>Lunedì: Chiuso</p>
+            
+            <div class="info-block">
+                <h4>Indirizzo</h4>
+                <p>Piazza del Colosseo, 1, 00184 Roma (RM)</p>
+            </div>
+
+            <div class="info-block">
+                <h4>Prenotazioni & Recapiti</h4>
+                <p>Telefono: <a href="tel:+390612345678">+39 06 1234 5678</a></p>
+                <p>Email: <a href="mailto:info@luminacucina.it">info@luminacucina.it</a></p>
+            </div>
+            
+            <div class="info-block">
+                <h4>Orari del Servizio</h4>
+                <p><strong>Mar - Sab:</strong> 19:30 - 23:30 (Cena)</p>
+                <p><strong>Domenica:</strong> 12:30 - 15:00 &bull; 19:30 - 23:00</p>
+                <p class="text-accent">Lunedì: Giorno di Chiusura</p>
+            </div>
+
+            <button class="btn-primary open-booking-trigger" style="margin-top: 15px;">Riserva un Tavolo Online</button>
         </div>
         
         <div class="map-container">
@@ -305,25 +190,147 @@
                 style="border:0;" 
                 allowfullscreen="" 
                 loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade">
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Mappa Lumina Roma">
             </iframe>
         </div>
     </section>
 
+    <!-- 6. FOOTER -->
     <footer>
-        <p>© 2026 Lumina Ristorante. Tutti i diritti riservati. P.IVA 12345678901</p>
-        <p style="margin-top: 10px;">Progettato in puro codice da <strong>The Orbis Project</strong></p>
+        <div class="footer-content">
+            <a href="#" class="logo footer-logo">Lumi<span>na</span></a>
+            <p>© 2026 Lumina Ristorante. Tutti i diritti riservati. P.IVA 12345678901</p>
+            <p class="credits">Progettato in architettura Single-Page da <strong>The Orbis Project</strong></p>
+        </div>
     </footer>
 
-    <script>
-        window.addEventListener('scroll', function() {
-            var navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-    </script>
+    <!-- ======================================================================
+         MODALE 1: LA CARTA COMPLETA (EDITORIALE CON SCHEDE & DOWNLOAD PDF)
+         ====================================================================== -->
+    <div id="modal-menu" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-box modal-box-large">
+            <button class="modal-close" aria-label="Chiudi menù">&times;</button>
+            
+            <div class="modal-header">
+                <span class="section-tag">Proposta Enogastronomica</span>
+                <h2>La Carta di Lumina</h2>
+                <p>Ingredienti di stagione, creatività contemporanea e rispetto della tradizione.</p>
+            </div>
+
+            <!-- Tab di Navigazione delle Portate -->
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-tab="degustazione">Degustazione</button>
+                <button class="tab-btn" data-tab="antipasti">Antipasti</button>
+                <button class="tab-btn" data-tab="primi">Primi</button>
+                <button class="tab-btn" data-tab="secondi">Secondi</button>
+                <button class="tab-btn" data-tab="dessert">Dessert</button>
+                <button class="tab-btn" data-tab="cantina">Cantina</button>
+            </div>
+
+            <!-- Corpo Dinamico del Menù -->
+            <div class="menu-tabs-content" id="menu-tabs-content">
+                <!-- I piatti e le descrizioni vengono iniettati o filtrati da JS -->
+            </div>
+
+            <!-- Footer Modale con Azione PDF -->
+            <div class="modal-footer-actions">
+                <button id="btn-download-pdf" class="btn-ghost">
+                    <span>📄</span> Scarica la Carta Ufficiale (PDF)
+                </button>
+                <button class="btn-primary open-booking-trigger">Riserva per questo Menù</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================================================================
+         MODALE 2: WIDGET PRENOTAZIONE TAVOLO SMART
+         ====================================================================== -->
+    <div id="modal-prenota" class="modal-backdrop" aria-hidden="true">
+        <div class="modal-box">
+            <button class="modal-close" aria-label="Chiudi prenotazione">&times;</button>
+            
+            <div class="modal-header">
+                <span class="section-tag">Prenotazione Istantanea</span>
+                <h2>Riserva il tuo Tavolo</h2>
+                <p>Compila i dettagli del tuo percorso culinario. La disponibilità è confermata in tempo reale.</p>
+            </div>
+
+            <form id="booking-form" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="book-date">Data</label>
+                        <input type="date" id="book-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-time">Orario Servizio</label>
+                        <select id="book-time" required>
+                            <option value="" disabled selected>Seleziona orario...</option>
+                            <optgroup label="Cena">
+                                <option value="19:30">19:30</option>
+                                <option value="20:00">20:00</option>
+                                <option value="20:30">20:30</option>
+                                <option value="21:00">21:00</option>
+                                <option value="21:30">21:30</option>
+                            </optgroup>
+                            <optgroup label="Pranzo (Solo Domenica)">
+                                <option value="12:30">12:30</option>
+                                <option value="13:00">13:00</option>
+                                <option value="13:30">13:30</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="book-guests">Numero Ospiti</label>
+                        <select id="book-guests" required>
+                            <option value="1 Ospite">1 Persona</option>
+                            <option value="2 Ospiti" selected>2 Persone</option>
+                            <option value="3 Ospiti">3 Persone</option>
+                            <option value="4 Ospiti">4 Persone</option>
+                            <option value="5 Ospiti">5 Persone</option>
+                            <option value="6+ Ospiti (Tavolo Reale)">6+ Ospiti</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-name">Nome e Cognome</label>
+                        <input type="text" id="book-name" placeholder="Es. Mario Rossi" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="book-phone">Recapito Telefonico</label>
+                        <input type="tel" id="book-phone" placeholder="+39 ..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-occasion">Occasione Speciale</label>
+                        <select id="book-occasion">
+                            <option value="Cena Ordinaria">Nessuna in particolare</option>
+                            <option value="Anniversario / Romantica">Anniversario / Romantica</option>
+                            <option value="Cena di Lavoro">Incontro di Lavoro</option>
+                            <option value="Compleanno">Compleanno</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="book-notes">Allergie, Intolleranze o Richieste</label>
+                    <textarea id="book-notes" rows="2" placeholder="Es. Senza glutine, preferenza tavolo panoramico..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary btn-submit-booking">Conferma Prenotazione</button>
+            </form>
+
+            <div id="booking-confirmation" class="booking-confirmation hidden">
+                <!-- Mostrato via JS dopo l'invio con ID Voucher e link WhatsApp -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Script del Motore Logico -->
+    <script src="js/main.js" defer></script>
 </body>
 </html>
