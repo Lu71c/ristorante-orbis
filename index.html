@@ -14,7 +14,7 @@
     <!-- Foglio di Stile Esterno -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-orbis-site="lumina-cucina">
 
     <!-- 1. HEADER & NAVIGAZIONE DESKTOP / MOBILE -->
     <header id="navbar">
@@ -25,9 +25,9 @@
             <ul>
                 <li><a href="#filosofia">Filosofia</a></li>
                 <li><a href="#menu">I Classici</a></li>
-                <li><a href="#" class="open-menu-trigger">La Carta</a></li>
+                <li><a href="#" class="open-menu-trigger" data-orbis-page="la-carta" data-orbis-track="nav-la-carta" data-orbis-label="Header: La Carta">La Carta</a></li>
                 <li><a href="#contatti">Dove Siamo</a></li>
-                <li><a href="#" class="btn-prenota open-booking-trigger">Riserva</a></li>
+                <li><a href="#" class="btn-prenota open-booking-trigger" data-orbis-page="prenota-tavolo" data-orbis-track="cta-header-riserva" data-orbis-label="Header: Riserva">Riserva</a></li>
             </ul>
         </nav>
 
@@ -44,33 +44,36 @@
         <nav class="mobile-nav-links">
             <a href="#filosofia" class="mobile-link">Filosofia</a>
             <a href="#menu" class="mobile-link">I Nostri Classici</a>
-            <a href="#" class="mobile-link open-menu-trigger">La Carta Completa</a>
+            <a href="#" class="mobile-link open-menu-trigger" data-orbis-page="la-carta" data-orbis-track="mobile-la-carta" data-orbis-label="Mobile: La Carta Completa">La Carta Completa</a>
             <a href="#contatti" class="mobile-link">Dove Siamo</a>
-            <a href="#" class="btn-primary mobile-btn-prenota open-booking-trigger">Riserva un Tavolo</a>
+            <a href="#" class="btn-primary mobile-btn-prenota open-booking-trigger" data-orbis-page="prenota-tavolo" data-orbis-track="mobile-riserva-tavolo" data-orbis-label="Mobile: Riserva un Tavolo">Riserva un Tavolo</a>
         </nav>
     </div>
 
     <!-- 2. HERO PRINCIPALE -->
+    <!-- ORBIS-SECTION: hero | Hero & Copertina Principale -->
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-subtitle">Alta Gastronomia Contemporanea</span>
-            <h1>L'arte del Gusto.</h1>
-            <p>Un viaggio sensoriale tra la memoria culinaria italiana e l'avanguardia tecnica. Scopri la purezza della materia prima nel cuore di Roma.</p>
+            <!-- ORBIS-SUBTITLE --><span class="hero-subtitle">Alta Gastronomia Contemporanea</span><!-- /ORBIS-SUBTITLE -->
+            <!-- ORBIS-TITLE --><h1>L'arte del Gusto.</h1><!-- /ORBIS-TITLE -->
+            <!-- ORBIS-DESC --><p>Un viaggio sensoriale tra la memoria culinaria italiana e l'avanguardia tecnica. Scopri la purezza della materia prima nel cuore di Roma.</p><!-- /ORBIS-DESC -->
             <div class="hero-actions">
-                <a href="#" class="btn-primary open-booking-trigger">Riserva un Tavolo</a>
-                <a href="#" class="btn-ghost open-menu-trigger">Sfoglia il Menù</a>
+                <a href="#" class="btn-primary open-booking-trigger" data-orbis-page="prenota-tavolo" data-orbis-track="cta-hero-riserva" data-orbis-label="Hero: Riserva un Tavolo">Riserva un Tavolo</a>
+                <a href="#" class="btn-ghost open-menu-trigger" data-orbis-page="la-carta" data-orbis-track="cta-hero-sfoglia-menu" data-orbis-label="Hero: Sfoglia il Menù">Sfoglia il Menù</a>
             </div>
         </div>
     </section>
+    <!-- /ORBIS-SECTION: hero -->
 
     <!-- 3. FILOSOFIA -->
+    <!-- ORBIS-SECTION: filosofia | Filosofia & Visione -->
     <section id="filosofia" class="filosofia">
         <div class="filosofia-text">
-            <span class="section-tag">Visione & Metodo</span>
-            <h2>La nostra visione</h2>
-            <p>Selezioniamo ingredienti rari dai micro-produttori del territorio laziale e italiano per sublimarli in composizioni culinarie senza compromessi.</p>
-            <p>A Lumina ogni portata è concepita come un dialogo tra contrasti: temperature, consistenze e aromi studiati per orchestrare una profonda risonanza emotiva.</p>
+            <!-- ORBIS-SUBTITLE --><span class="section-tag">Visione &amp; Metodo</span><!-- /ORBIS-SUBTITLE -->
+            <!-- ORBIS-TITLE --><h2>La nostra visione</h2><!-- /ORBIS-TITLE -->
+            <!-- ORBIS-DESC --><p>Selezioniamo ingredienti rari dai micro-produttori del territorio laziale e italiano per sublimarli in composizioni culinarie senza compromessi.</p>
+            <p>A Lumina ogni portata è concepita come un dialogo tra contrasti: temperature, consistenze e aromi studiati per orchestrare una profonda risonanza emotiva.</p><!-- /ORBIS-DESC -->
             <div class="filosofia-badges">
                 <div class="badge-item">
                     <strong>0 Km</strong>
@@ -88,88 +91,100 @@
         </div>
         
         <div class="filosofia-image-container">
-            <img src="img/filosofia.jpg" alt="La cucina a vista di Lumina" loading="lazy" decoding="async">
+            <!-- ORBIS-IMG --><img src="img/filosofia.jpg" alt="La cucina a vista di Lumina" loading="lazy" decoding="async"><!-- /ORBIS-IMG -->
         </div>
     </section>
+    <!-- /ORBIS-SECTION: filosofia -->
 
     <!-- 4. I NOSTRI CLASSICI (ANTEPRIMA PIATTI) -->
     <section id="menu" class="menu">
+        <!-- ORBIS-SECTION: menu-intro | I Nostri Classici - Intestazione -->
         <div class="section-header">
-            <span class="section-tag">Creazioni Iconiche</span>
-            <h2>I Nostri Classici</h2>
-            <p>Tre manifesti culinari che definiscono l'identità gastronomica della cucina di Lumina.</p>
+            <!-- ORBIS-SUBTITLE --><span class="section-tag">Creazioni Iconiche</span><!-- /ORBIS-SUBTITLE -->
+            <!-- ORBIS-TITLE --><h2>I Nostri Classici</h2><!-- /ORBIS-TITLE -->
+            <!-- ORBIS-DESC --><p>Tre manifesti culinari che definiscono l'identità gastronomica della cucina di Lumina.</p><!-- /ORBIS-DESC -->
         </div>
+        <!-- /ORBIS-SECTION: menu-intro -->
 
         <div class="grid-menu">
             <!-- Piatto 1 -->
+            <!-- ORBIS-SECTION: piatto-1 | Classico 1 - Tartare di Fassona -->
             <article class="piatto-card">
                 <div class="piatto-img-container">
-                    <img src="img/piatto1.jpg" alt="Tartare di Fassona" loading="lazy" decoding="async">
+                    <!-- ORBIS-IMG --><img src="img/piatto1.jpg" alt="Tartare di Fassona" loading="lazy" decoding="async"><!-- /ORBIS-IMG -->
                 </div>
                 <div class="piatto-info">
                     <div class="piatto-header">
-                        <h3>Tartare di Fassona</h3>
-                        <span class="prezzo">€ 24</span>
+                        <!-- ORBIS-TITLE --><h3>Tartare di Fassona</h3><!-- /ORBIS-TITLE -->
+                        <!-- ORBIS-SUBTITLE --><span class="prezzo">€ 24</span><!-- /ORBIS-SUBTITLE -->
                     </div>
-                    <p>Battuta al coltello, tuorlo d'uovo di selva marinato, perlage di tartufo nero estivo e cialda croccante al Parmigiano Reggiano 36 mesi.</p>
+                    <!-- ORBIS-DESC --><p>Battuta al coltello, tuorlo d'uovo di selva marinato, perlage di tartufo nero estivo e cialda croccante al Parmigiano Reggiano 36 mesi.</p><!-- /ORBIS-DESC -->
                 </div>
             </article>
+            <!-- /ORBIS-SECTION: piatto-1 -->
             
             <!-- Piatto 2 -->
+            <!-- ORBIS-SECTION: piatto-2 | Classico 2 - Risotto Zafferano e Oro -->
             <article class="piatto-card featured-dish">
                 <div class="dish-badge">Signature</div>
                 <div class="piatto-img-container">
-                    <img src="img/piatto2.jpg" alt="Risotto Zafferano e Oro" loading="lazy" decoding="async">
+                    <!-- ORBIS-IMG --><img src="img/piatto2.jpg" alt="Risotto Zafferano e Oro" loading="lazy" decoding="async"><!-- /ORBIS-IMG -->
                 </div>
                 <div class="piatto-info">
                     <div class="piatto-header">
-                        <h3>Risotto Zafferano e Oro</h3>
-                        <span class="prezzo">€ 32</span>
+                        <!-- ORBIS-TITLE --><h3>Risotto Zafferano e Oro</h3><!-- /ORBIS-TITLE -->
+                        <!-- ORBIS-SUBTITLE --><span class="prezzo">€ 32</span><!-- /ORBIS-SUBTITLE -->
                     </div>
-                    <p>Riso Carnaroli riserva all'onda, pistilli di zafferano puro, riduzione di midollo affumicato e foglia d'oro edibile 24 carati.</p>
+                    <!-- ORBIS-DESC --><p>Riso Carnaroli riserva all'onda, pistilli di zafferano puro, riduzione di midollo affumicato e foglia d'oro edibile 24 carati.</p><!-- /ORBIS-DESC -->
                 </div>
             </article>
+            <!-- /ORBIS-SECTION: piatto-2 -->
             
             <!-- Piatto 3 -->
+            <!-- ORBIS-SECTION: piatto-3 | Classico 3 - Sfera di Cioccolato -->
             <article class="piatto-card">
                 <div class="piatto-img-container">
-                    <img src="img/piatto3.jpg" alt="Sfera di Cioccolato" loading="lazy" decoding="async">
+                    <!-- ORBIS-IMG --><img src="img/piatto3.jpg" alt="Sfera di Cioccolato" loading="lazy" decoding="async"><!-- /ORBIS-IMG -->
                 </div>
                 <div class="piatto-info">
                     <div class="piatto-header">
-                        <h3>Sfera di Cioccolato</h3>
-                        <span class="prezzo">€ 16</span>
+                        <!-- ORBIS-TITLE --><h3>Sfera di Cioccolato</h3><!-- /ORBIS-TITLE -->
+                        <!-- ORBIS-SUBTITLE --><span class="prezzo">€ 16</span><!-- /ORBIS-SUBTITLE -->
                     </div>
-                    <p>Fondente monorigine 72%, cuore cremoso di lamponi selvatici e polvere di pistacchio di Bronte DOP con cascata di caramello salato caldo.</p>
+                    <!-- ORBIS-DESC --><p>Fondente monorigine 72%, cuore cremoso di lamponi selvatici e polvere di pistacchio di Bronte DOP con cascata di caramello salato caldo.</p><!-- /ORBIS-DESC -->
                 </div>
             </article>
+            <!-- /ORBIS-SECTION: piatto-3 -->
         </div>
 
         <!-- Call To Action per la Carta Completa -->
+        <!-- ORBIS-SECTION: menu-cta | Banner Carta Completa -->
         <div class="menu-cta-banner">
             <div class="menu-cta-text">
-                <h3>Desideri esplorare l'intera proposta gastronomica?</h3>
-                <p>Scopri i percorsi degustazione a mano libera dello Chef e la selezione della cantina.</p>
+                <!-- ORBIS-TITLE --><h3>Desideri esplorare l'intera proposta gastronomica?</h3><!-- /ORBIS-TITLE -->
+                <!-- ORBIS-DESC --><p>Scopri i percorsi degustazione a mano libera dello Chef e la selezione della cantina.</p><!-- /ORBIS-DESC -->
             </div>
-            <button class="btn-primary open-menu-trigger">Consulta il Menù Completo</button>
+            <button class="btn-primary open-menu-trigger" data-orbis-page="la-carta" data-orbis-track="cta-banner-menu-completo" data-orbis-label="Banner: Consulta il Menù Completo">Consulta il Menù Completo</button>
         </div>
+        <!-- /ORBIS-SECTION: menu-cta -->
     </section>
 
     <!-- 5. CONTATTI, ORARI E MAPPA -->
+    <!-- ORBIS-SECTION: contatti | Contatti, Orari & Sede -->
     <section id="contatti" class="contatti">
         <div class="contatti-info">
-            <span class="section-tag">Ospitalità & Sede</span>
-            <h2>Vieni a trovarci</h2>
+            <!-- ORBIS-SUBTITLE --><span class="section-tag">Ospitalità &amp; Sede</span><!-- /ORBIS-SUBTITLE -->
+            <!-- ORBIS-TITLE --><h2>Vieni a trovarci</h2><!-- /ORBIS-TITLE -->
             
-            <div class="info-block">
+            <!-- ORBIS-DESC --><div class="info-block">
                 <h4>Indirizzo</h4>
                 <p>Piazza del Colosseo, 1, 00184 Roma (RM)</p>
             </div>
 
             <div class="info-block">
-                <h4>Prenotazioni & Recapiti</h4>
-                <p>Telefono: <a href="tel:+390612345678">+39 06 1234 5678</a></p>
-                <p>Email: <a href="mailto:info@luminacucina.it">info@luminacucina.it</a></p>
+                <h4>Prenotazioni &amp; Recapiti</h4>
+                <p>Telefono: <a href="tel:+390612345678" data-orbis-track="cta-telefono-lumina" data-orbis-label="Contatti: Telefono">+39 06 1234 5678</a></p>
+                <p>Email: <a href="mailto:info@luminacucina.it" data-orbis-track="cta-email-lumina" data-orbis-label="Contatti: Email">info@luminacucina.it</a></p>
             </div>
             
             <div class="info-block">
@@ -177,9 +192,9 @@
                 <p><strong>Mar - Sab:</strong> 19:30 - 23:30 (Cena)</p>
                 <p><strong>Domenica:</strong> 12:30 - 15:00 &bull; 19:30 - 23:00</p>
                 <p class="text-accent">Lunedì: Giorno di Chiusura</p>
-            </div>
+            </div><!-- /ORBIS-DESC -->
 
-            <button class="btn-primary open-booking-trigger" style="margin-top: 15px;">Riserva un Tavolo Online</button>
+            <button class="btn-primary open-booking-trigger" style="margin-top: 15px;" data-orbis-page="prenota-tavolo" data-orbis-track="cta-contatti-riserva" data-orbis-label="Contatti: Riserva Tavolo Online">Riserva un Tavolo Online</button>
         </div>
         
         <div class="map-container">
@@ -190,20 +205,23 @@
                 style="border:0;" 
                 allowfullscreen="" 
                 loading="lazy" 
-                referrerpolicy="no-referrer-when-downgrade"
+                referrerpolicy="no-referrer-when-downgrade" 
                 title="Mappa Lumina Roma">
             </iframe>
         </div>
     </section>
+    <!-- /ORBIS-SECTION: contatti -->
 
     <!-- 6. FOOTER -->
+    <!-- ORBIS-SECTION: footer | Footer & Note Legali -->
     <footer>
         <div class="footer-content">
-            <a href="#" class="logo footer-logo">Lumi<span>na</span></a>
-            <p>© 2026 Lumina Ristorante. Tutti i diritti riservati. P.IVA 12345678901</p>
+            <!-- ORBIS-TITLE --><a href="#" class="logo footer-logo">Lumi<span>na</span></a><!-- /ORBIS-TITLE -->
+            <!-- ORBIS-DESC --><p>© 2026 Lumina Ristorante. Tutti i diritti riservati. P.IVA 12345678901</p><!-- /ORBIS-DESC -->
             <p class="credits">Progettato in architettura Single-Page da <strong>The Orbis Project</strong></p>
         </div>
     </footer>
+    <!-- /ORBIS-SECTION: footer -->
 
     <!-- ======================================================================
          MODALE 1: LA CARTA COMPLETA (EDITORIALE CON SCHEDE & DOWNLOAD PDF)
@@ -235,10 +253,10 @@
 
             <!-- Footer Modale con Azione PDF -->
             <div class="modal-footer-actions">
-                <button id="btn-download-pdf" class="btn-ghost">
+                <button id="btn-download-pdf" class="btn-ghost" data-orbis-track="cta-download-carta-pdf" data-orbis-label="Carta: Download PDF">
                     <span>📄</span> Scarica la Carta Ufficiale (PDF)
                 </button>
-                <button class="btn-primary open-booking-trigger">Riserva per questo Menù</button>
+                <button class="btn-primary open-booking-trigger" data-orbis-page="prenota-tavolo" data-orbis-track="cta-carta-riserva" data-orbis-label="Carta: Riserva per questo Menù">Riserva per questo Menù</button>
             </div>
         </div>
     </div>
@@ -321,7 +339,7 @@
                     <textarea id="book-notes" rows="2" placeholder="Es. Senza glutine, preferenza tavolo panoramico..."></textarea>
                 </div>
 
-                <button type="submit" class="btn-primary btn-submit-booking">Conferma Prenotazione</button>
+                <button type="submit" class="btn-primary btn-submit-booking" data-orbis-track="conversion-prenota-tavolo" data-orbis-label="Conversione: Conferma Tavolo">Conferma Prenotazione</button>
             </form>
 
             <div id="booking-confirmation" class="booking-confirmation hidden">
