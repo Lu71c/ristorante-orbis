@@ -1,9 +1,105 @@
 /* ==========================================================================
    LUMINA | CUCINA SENSORIALE - MOTORE INTERATTIVO (js/main.js)
-   Architettura: Preload RAM, Mobile Drawer, Carta a Tab, Booking Smart
+   Architettura: Preload RAM, Mobile Drawer, Carta a Tab, Booking Smart & Orbis Telemetry
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    /* ==========================================================================
+       0. ORBIS PRIVACY-FIRST ANALYTICS ENGINE (Zero Cookie • Zero IP • GDPR-Free)
+       ========================================================================== */
+    const ORBIS_ANALYTICS = (() => {
+        const ENDPOINT = 'https://smith-anchor-untoasted.ngrok-free.dev/api/v1/analytics/hit';
+        const SITE_ID = document.body.getAttribute('data-orbis-site') || 'lumina-cucina';
+        const DWELL_MS = 2000; // Soglia minima di permanenza visiva (2 secondi)
+        const trackedSessionKeys = new Set();
+
+        function sendPulse(eventType, targetId, label = '') {
+            if (!SITE_ID || !targetId) return;
+            const params = new URLSearchParams({
+                site_id: SITE_ID,
+                event_type: eventType,
+                target_id: targetId
+            });
+            if (label) params.set('label', label);
+
+            const url = `${ENDPOINT}?${params.toString()}`;
+            try {
+                fetch(url, {
+                    method: 'POST',
+                    keepalive: true,
+                    headers: { 'ngrok-skip-browser-warning': 'true' }
+                }).catch(() => {});
+            } catch (_) {
+                if (navigator.sendBeacon) navigator.sendBeacon(url);
+            }
+        }
+
+        function trackPageView(pageName) {
+            const cleanPage = (pageName || window.location.pathname.split('/').pop() || 'index.html').trim();
+            const dedupKey = `orbis_pv_${SITE_ID}_${cleanPage}`;
+            if (sessionStorage.getItem(dedupKey)) return;
+            sessionStorage.setItem(dedupKey, '1');
+            sendPulse('page_view', cleanPage);
+        }
+
+        function observeScrollSections() {
+            const sections = document.querySelectorAll('section[id], [data-orbis-section]');
+            if (!sections.length || !('IntersectionObserver' in window)) return;
+
+            const activeTimers = new Map();
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    const secId = entry.target.getAttribute('data-orbis-section') || entry.target.id;
+                    if (!secId) return;
+
+                    if (entry.isIntersecting) {
+                        if (trackedSessionKeys.has(`sec_${secId}`) || activeTimers.has(secId)) return;
+                        const timerId = setTimeout(() => {
+                            trackedSessionKeys.add(`sec_${secId}`);
+                            activeTimers.delete(secId);
+                            sendPulse('section_view', secId);
+                        }, DWELL_MS);
+                        activeTimers.set(secId, timerId);
+                    } else if (activeTimers.has(secId)) {
+                        clearTimeout(activeTimers.get(secId));
+                        activeTimers.delete(secId);
+                    }
+                });
+            }, { threshold: 0.35 });
+
+            sections.forEach(sec => observer.observe(sec));
+        }
+
+        function bindClickTracking() {
+            document.addEventListener('click', (e) => {
+                const virtualPageEl = e.target.closest('[data-orbis-page]');
+                if (virtualPageEl) {
+                    trackPageView(virtualPageEl.getAttribute('data-orbis-page'));
+                }
+
+                const trackEl = e.target.closest('[data-orbis-track]');
+                if (trackEl) {
+                    const trackId = trackEl.getAttribute('data-orbis-track');
+                    const trackLabel = trackEl.getAttribute('data-orbis-label') || trackEl.textContent.trim().slice(0, 60);
+                    sendPulse('track_click', trackId, trackLabel);
+                }
+            });
+        }
+
+        return {
+            init() {
+                trackPageView();
+                observeScrollSections();
+                bindClickTracking();
+            },
+            trackCustom(trackId, label) {
+                sendPulse('track_click', trackId, label);
+            }
+        };
+    })();
+
+    ORBIS_ANALYTICS.init();
 
     /* ==========================================================================
        1. PRECARICAMENTO SILENZIOSO IMMAGINI IN RAM
@@ -278,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div style="flex: 1;">
                             <div class="menu-item-title">${item.titolo}</div>
                             <div class="menu-item-desc">${item.desc}</div>
-                            ${item.nota ? `<div style="font-size: 0.75rem; color: var(--accent-gold); margin-top: 4px;">\${item.nota}</div>` : ''}
+                            ${item.nota ? `<div style="font-size: 0.75rem; color: var(--accent-gold); margin-top: 4px;">${item.nota}</div>` : ''}
                         </div>
                         <div class="menu-item-price">${item.prezzo}</div>
                     </div>
@@ -298,6 +394,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tabButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             const targetCategory = btn.getAttribute('data-tab');
+            ORBIS_ANALYTICS.trackCustom(`carta-tab-${targetCategory}`, `Carta: Tab ${btn.textContent.trim()}`);
             renderCategory(targetCategory);
         });
     });
@@ -367,7 +464,6 @@ Tutti i prezzi sono espressi in Euro, IVA inclusa.
     const bookingConfirmation = document.getElementById('booking-confirmation');
     const dateInput = document.getElementById('book-date');
 
-    // Imposta la data minima di prenotazione a oggi
     if (dateInput) {
         const today = new Date().toISOString().split('T')[0];
         dateInput.min = today;
@@ -388,7 +484,6 @@ Tutti i prezzi sono espressi in Euro, IVA inclusa.
 
             const voucherId = 'LUM-' + Math.floor(100000 + Math.random() * 900000);
 
-            // Costruzione messaggio WhatsApp per la segreteria del ristorante
             const msgWhatsApp = `Gentile Lumina, vorrei confermare la prenotazione del tavolo:%0A` +
                                 `• Voucher: ${voucherId}%0A` +
                                 `• Ospite: ${name}%0A` +
@@ -412,11 +507,11 @@ Tutti i prezzi sono espressi in Euro, IVA inclusa.
                     <p><strong>Data & Orario:</strong> ${date} &bull; Ore ${time}</p>
                     <p><strong>Ospiti:</strong> ${guests}</p>
                     <p><strong>Occasione:</strong> ${occasion}</p>
-                    ${notes !== 'Nessuna nota specifica' ? `<p><strong>Note:</strong> \${notes}</p>` : ''}
+                    ${notes !== 'Nessuna nota specifica' ? `<p><strong>Note:</strong> ${notes}</p>` : ''}
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 20px;">
-                    <a href="https://wa.me/390612345678?text=${msgWhatsApp}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="background-color: #25D366; border-color: #25D366; color: white;">
+                    <a href="https://wa.me/390612345678?text=${msgWhatsApp}" target="_blank" rel="noopener noreferrer" class="btn-primary" data-orbis-track="conversion-lumina-whatsapp" data-orbis-label="Conversione Lumina: Invio WhatsApp" style="background-color: #25D366; border-color: #25D366; color: white;">
                         💬 Invia Dettagli su WhatsApp
                     </a>
                     <button id="btn-reset-booking" class="btn-ghost" style="padding: 10px;">
