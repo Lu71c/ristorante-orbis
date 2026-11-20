@@ -105,11 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
        1. PRECARICAMENTO SILENZIOSO IMMAGINI IN RAM
        ========================================================================== */
     const immaginiPreload = [
-        'img/sfondo-hero.jpg',
-        'img/filosofia.jpg',
-        'img/piatto1.jpg',
-        'img/piatto2.jpg',
-        'img/piatto3.jpg'
+        'img/sfondo-hero.webp',
+        'img/filosofia.webp',
+        'img/piatto1.webp',
+        'img/piatto2.webp',
+        'img/piatto3.webp'
     ];
 
     immaginiPreload.forEach(src => {
