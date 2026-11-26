@@ -46,7 +46,6 @@ html {
     scroll-behavior: smooth;
     font-size: 16px;
     background-color: var(--bg-dark);
-    scroll-padding-top: 80px; /* Compensa la navbar sticky durante lo scroll ad ancore */
 }
 
 body {
@@ -979,21 +978,6 @@ footer .credits strong {
 .modal-box::-webkit-scrollbar-thumb {
     background: var(--border-gold);
     border-radius: 2px;
-}
-
-/* ==========================================================================
-   ANIMAZIONI ON SCROLL (FADE IN UP)
-   ========================================================================== */
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
-    will-change: opacity, transform;
-}
-
-.fade-in-up.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* ==========================================================================
