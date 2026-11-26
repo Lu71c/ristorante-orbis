@@ -139,12 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleMobileMenu() {
         const isOpen = mobileDrawer.classList.toggle('open');
         hamburgerBtn.classList.toggle('active', isOpen);
+        hamburgerBtn.setAttribute('aria-expanded', isOpen);
         document.body.classList.toggle('no-scroll', isOpen);
     }
 
     function closeMobileMenu() {
         mobileDrawer.classList.remove('open');
         hamburgerBtn.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('no-scroll');
     }
 
@@ -534,5 +536,26 @@ Tutti i prezzi sono espressi in Euro, IVA inclusa.
             }
         });
     }
+
+    /* ==========================================================================
+       8. ANIMAZIONI ON SCROLL (FADE IN UP)
+       ========================================================================== */
+    const fadeObserverOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, fadeObserverOptions);
+
+    document.querySelectorAll('.fade-in-up').forEach(el => {
+        fadeObserver.observe(el);
+    });
 
 });
