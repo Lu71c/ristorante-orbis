@@ -32,7 +32,7 @@
         </nav>
 
         <!-- Pulsante Hamburger Mobile (Tre linee minimali) -->
-        <button class="hamburger-btn" id="hamburger-btn" aria-label="Apri menu di navigazione">
+        <button class="hamburger-btn" id="hamburger-btn" aria-label="Apri menu di navigazione" aria-expanded="false">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
@@ -55,10 +55,10 @@
     <section class="hero">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <!-- ORBIS-SUBTITLE --><span class="hero-subtitle">Alta Gastronomia Contemporanea</span><!-- /ORBIS-SUBTITLE -->
-            <!-- ORBIS-TITLE --><h1>L'arte del Gusto.</h1><!-- /ORBIS-TITLE -->
-            <!-- ORBIS-DESC --><p>Un viaggio sensoriale tra la memoria culinaria italiana e l'avanguardia tecnica. Scopri la purezza della materia prima nel cuore di Roma.</p><!-- /ORBIS-DESC -->
-            <div class="hero-actions">
+            <!-- ORBIS-SUBTITLE --><span class="hero-subtitle fade-in-up">Alta Gastronomia Contemporanea</span><!-- /ORBIS-SUBTITLE -->
+            <!-- ORBIS-TITLE --><h1 class="fade-in-up" style="transition-delay: 0.1s;">L'arte del Gusto.</h1><!-- /ORBIS-TITLE -->
+            <!-- ORBIS-DESC --><p class="fade-in-up" style="transition-delay: 0.2s;">Un viaggio sensoriale tra la memoria culinaria italiana e l'avanguardia tecnica. Scopri la purezza della materia prima nel cuore di Roma.</p><!-- /ORBIS-DESC -->
+            <div class="hero-actions fade-in-up" style="transition-delay: 0.3s;">
                 <a href="#" class="btn-primary open-booking-trigger" data-orbis-page="prenota-tavolo" data-orbis-track="cta-hero-riserva" data-orbis-label="Hero: Riserva un Tavolo">Riserva un Tavolo</a>
                 <a href="#" class="btn-ghost open-menu-trigger" data-orbis-page="la-carta" data-orbis-track="cta-hero-sfoglia-menu" data-orbis-label="Hero: Sfoglia il Menù">Sfoglia il Menù</a>
             </div>
@@ -69,7 +69,7 @@
     <!-- 3. FILOSOFIA -->
     <!-- ORBIS-SECTION: filosofia | Filosofia & Visione -->
     <section id="filosofia" class="filosofia">
-        <div class="filosofia-text">
+        <div class="filosofia-text fade-in-up">
             <!-- ORBIS-SUBTITLE --><span class="section-tag">Visione &amp; Metodo</span><!-- /ORBIS-SUBTITLE -->
             <!-- ORBIS-TITLE --><h2>La nostra visione</h2><!-- /ORBIS-TITLE -->
             <!-- ORBIS-DESC --><p>Selezioniamo ingredienti rari dai micro-produttori del territorio laziale e italiano per sublimarli in composizioni culinarie senza compromessi.</p>
@@ -90,7 +90,7 @@
             </div>
         </div>
         
-        <div class="filosofia-image-container">
+        <div class="filosofia-image-container fade-in-up" style="transition-delay: 0.2s;">
             <!-- ORBIS-IMG --><img src="img/filosofia.webp" alt="La cucina a vista di Lumina" loading="lazy" decoding="async"><!-- /ORBIS-IMG -->
         </div>
     </section>
@@ -99,7 +99,7 @@
     <!-- 4. I NOSTRI CLASSICI (ANTEPRIMA PIATTI) -->
     <section id="menu" class="menu">
         <!-- ORBIS-SECTION: menu-intro | I Nostri Classici - Intestazione -->
-        <div class="section-header">
+        <div class="section-header fade-in-up">
             <!-- ORBIS-SUBTITLE --><span class="section-tag">Creazioni Iconiche</span><!-- /ORBIS-SUBTITLE -->
             <!-- ORBIS-TITLE --><h2>I Nostri Classici</h2><!-- /ORBIS-TITLE -->
             <!-- ORBIS-DESC --><p>Tre manifesti culinari che definiscono l'identità gastronomica della cucina di Lumina.</p><!-- /ORBIS-DESC -->
@@ -109,7 +109,7 @@
         <div class="grid-menu">
             <!-- Piatto 1 -->
             <!-- ORBIS-SECTION: piatto-1 | Classico 1 - Tartare di Fassona -->
-            <article class="piatto-card">
+            <article class="piatto-card fade-in-up">
                 <div class="piatto-img-container">
                     <!-- ORBIS-IMG --><img src="img/piatto1.webp" alt="Tartare di Fassona" loading="lazy" decoding="async"><!-- /ORBIS-IMG -->
                 </div>
@@ -125,7 +125,7 @@
             
             <!-- Piatto 2 -->
             <!-- ORBIS-SECTION: piatto-2 | Classico 2 - Risotto Zafferano e Oro -->
-            <article class="piatto-card featured-dish">
+            <article class="piatto-card featured-dish fade-in-up" style="transition-delay: 0.1s;">
                 <div class="dish-badge">Signature</div>
                 <div class="piatto-img-container">
                     <!-- ORBIS-IMG --><img src="img/piatto2.webp" alt="Risotto Zafferano e Oro" loading="lazy" decoding="async"><!-- /ORBIS-IMG -->
@@ -142,7 +142,7 @@
             
             <!-- Piatto 3 -->
             <!-- ORBIS-SECTION: piatto-3 | Classico 3 - Sfera di Cioccolato -->
-            <article class="piatto-card">
+            <article class="piatto-card fade-in-up" style="transition-delay: 0.2s;">
                 <div class="piatto-img-container">
                     <!-- ORBIS-IMG --><img src="img/piatto3.webp" alt="Sfera di Cioccolato" loading="lazy" decoding="async"><!-- /ORBIS-IMG -->
                 </div>
@@ -159,7 +159,7 @@
 
         <!-- Call To Action per la Carta Completa -->
         <!-- ORBIS-SECTION: menu-cta | Banner Carta Completa -->
-        <div class="menu-cta-banner">
+        <div class="menu-cta-banner fade-in-up">
             <div class="menu-cta-text">
                 <!-- ORBIS-TITLE --><h3>Desideri esplorare l'intera proposta gastronomica?</h3><!-- /ORBIS-TITLE -->
                 <!-- ORBIS-DESC --><p>Scopri i percorsi degustazione a mano libera dello Chef e la selezione della cantina.</p><!-- /ORBIS-DESC -->
@@ -172,7 +172,7 @@
     <!-- 5. CONTATTI, ORARI E MAPPA -->
     <!-- ORBIS-SECTION: contatti | Contatti, Orari & Sede -->
     <section id="contatti" class="contatti">
-        <div class="contatti-info">
+        <div class="contatti-info fade-in-up">
             <!-- ORBIS-SUBTITLE --><span class="section-tag">Ospitalità &amp; Sede</span><!-- /ORBIS-SUBTITLE -->
             <!-- ORBIS-TITLE --><h2>Vieni a trovarci</h2><!-- /ORBIS-TITLE -->
             
@@ -197,7 +197,7 @@
             <button class="btn-primary open-booking-trigger" style="margin-top: 15px;" data-orbis-page="prenota-tavolo" data-orbis-track="cta-contatti-riserva" data-orbis-label="Contatti: Riserva Tavolo Online">Riserva un Tavolo Online</button>
         </div>
         
-        <div class="map-container">
+        <div class="map-container fade-in-up" style="transition-delay: 0.2s;">
             <iframe 
                 src="https://maps.google.com/maps?q=Piazza%20del%20Colosseo%201,%20Roma&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
