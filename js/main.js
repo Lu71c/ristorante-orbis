@@ -139,12 +139,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleMobileMenu() {
         const isOpen = mobileDrawer.classList.toggle('open');
         hamburgerBtn.classList.toggle('active', isOpen);
+        hamburgerBtn.setAttribute('aria-expanded', isOpen);
         document.body.classList.toggle('no-scroll', isOpen);
     }
 
     function closeMobileMenu() {
         mobileDrawer.classList.remove('open');
         hamburgerBtn.classList.remove('active');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('no-scroll');
     }
 
@@ -533,6 +535,28 @@ Tutti i prezzi sono espressi in Euro, IVA inclusa.
                 });
             }
         });
+    }
+
+    /* ==========================================================================
+       8. ANIMAZIONI DI ENTRATA ALLO SCROLL (REVEAL)
+       ========================================================================== */
+    const revealElements = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && revealElements.length > 0) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        revealElements.forEach(el => el.classList.add('active'));
     }
 
 });
