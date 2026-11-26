@@ -1112,3 +1112,23 @@ footer .credits strong {
         height: 220px;
     }
 }
+
+/* ==========================================================================
+   7. MIGLIORAMENTI UX & ACCESSIBILITÀ (REVEAL ANIMATIONS)
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Accessibilità per navigazione da tastiera */
+*:focus-visible {
+    outline: 2px solid var(--accent-gold);
+    outline-offset: 4px;
+}
